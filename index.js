@@ -27,7 +27,7 @@ const isLogged = function (req, res, next) {
 }
 
 app.get('/admin', (req, res) => {
-  let guests = getGuestList(res);
+ let guests = getGuestList(res);
   console.log(guests)
   res.render('pages/admin', {guests: guests})
 })
@@ -44,10 +44,10 @@ function handleReservation(req, res) {
     let rCode = req.body.code
     let data = getReservation(res, rCode)
 
-    // let response = `<ul class="confirmation"><li><p><b>Review your reservation</b></p></li><li><p>Name: <b>${data.rows.guestname} ${data.rows.guestlastname}</b></p></li><li><p>Guests: <b>${data.rows.guestnumber}</b></p></li><li><button class="button" onclick="confirmReservation(${data.rows.id})>Confirm</button></li></ul>`
-    res.set('Content-Type', 'application/json')
+    let response = `<ul class="confirmation"><li><p><b>Review your reservation</b></p></li><li><p>Name: <b>${data.rows.guestname} ${data.rows.guestlastname}</b></p></li><li><p>Guests: <b>${data.rows.guestnumber}</b></p></li><li><button class="button" onclick="confirmReservation(${data.rows.id})>Confirm</button></li></ul>`
+    res.set('Content-Type', 'text/html')
     res.send(data)
-    res.end()
+  //  res.end()
 }
 
 
@@ -82,7 +82,7 @@ function getGuestList(res) {
           return console.error('error running query', err);
         }
 
-        // res.send(data.rows)
+        res.send(data)
       });
     });
 }
