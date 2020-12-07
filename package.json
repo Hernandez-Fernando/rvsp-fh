@@ -15,5 +15,13 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "pg": "^8.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hernandez-Fernando/rvsp-fh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hernandez-Fernando/rvsp-fh/issues"
+  },
+  "homepage": "https://github.com/Hernandez-Fernando/rvsp-fh#readme"
 }

@@ -14,3 +14,7 @@ CREATE TABLE users
     username VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
+
+INSERT INTO guests VALUES (DEFAULT, 'Fernando', 'Hernandez', 'FEHE01', 2);
+INSERT INTO guests VALUES (DEFAULT, 'Guadalupe', 'Parra', 'GUPA02', 2);
+INSERT INTO guests VALUES (DEFAULT, 'Miguel', 'Vazquez', 'MIVA03', 3);
