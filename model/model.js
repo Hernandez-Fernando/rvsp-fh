@@ -12,7 +12,8 @@ function getReservation(code, callback) {
     let params = [code]
     pool.query(sql, params, function(err, result) { 
     if (err) {
-        throw err
+        console.log("Error in query: ")
+        console.log(err)
     } else {
         // console.log("Back from DB with result:");
         // console.log(result.rows);
