@@ -18,7 +18,7 @@ function getReservation(code, callback) {
     } else {
         // console.log("Back from DB with result:");
         // console.log(result.rows);
-        let data = results.rows
+        let data = result.rows
         callback(data)
     }
 })
