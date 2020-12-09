@@ -2,8 +2,7 @@ function searchReservation() {
     let code = $('#number').val()
 
     $.post("/reservation", {code:code}, function(data) {
-        console.log(data)
-        let outcome = `<div class="container><p class="text-bold>${data[0].guestname} ${data[0].guestlastname}</p><p>Number of Guests: ${data[0].guestnumber}</p>`
+        let outcome = `<div class="container"><p><span class="text-bold">Name:</span> ${data[0].guestname} ${data[0].guestlastname}</p><p><span class="text-bold">Number of Guests:</span> ${data[0].guestnumber}</p>`
 
         $('#result').html(outcome)
     })

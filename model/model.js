@@ -1,11 +1,7 @@
 const { Pool } = require('pg');
 const connectionString = process.env.DATABASE_URL
 
-console.log(connectionString)
 const pool = new Pool({ connectionString: connectionString })
-
-console.log(connectionString)
-
 
 function getReservation(code, callback) {
     
@@ -16,8 +12,6 @@ function getReservation(code, callback) {
         console.log("Error in query: ")
         console.log(err)
     } else {
-        // console.log("Back from DB with result:");
-        // console.log(result.rows);
         let data = result.rows
         callback(data)
     }
