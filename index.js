@@ -27,24 +27,6 @@ app.listen(PORT, () => console.log(`App ready on ${PORT}`))
 
 /*
 
-// Model
-function getReservation(res, rCode) {
-    pg.connect(function(err, client, done) {
-        if (err) {
-          return console.error('error fetching client from pool', err);
-        }
-        console.log("connected to database");
-        client.query(`SELECT * FROM guests WHERE guestCode = '${rCode}'`, function(err, data) {
-          done();
-          if (err) {
-            return console.error('error running query', err);
-          }
-
-          res.json(data.rows)
-        });
-      });
-}
-
 function getGuestList(res) {
   pg.connect(function(err, client, done) {
       if (err) {

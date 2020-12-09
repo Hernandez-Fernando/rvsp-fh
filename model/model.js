@@ -4,25 +4,23 @@ const connectionString = process.env.DATABASE_URL
 console.log(connectionString)
 const pool = new Pool({ connectionString: connectionString })
 
-var sql = "SELECT * FROM guests";
 
-pool.query(sql, function(err, result) {
-    // If an error occurred...
-    if (err) {
-        console.log("Error in query: ")
-        console.log(err);
-    }
-
-    // Log this to the console for debugging purposes.
-    console.log("Back from DB with result:");
-    console.log(result.rows);
-
-
-});
 
 function getReservation(code, callback) {
-    let data = {code: code}
-    callback(data)
+    
+    let sql = "SELECT * FROM guests WHERE guestCode =$1::text";
+    let params = [code]
+    pool.query(sql, params, function(err, result) { 
+    if (err) {
+        throw err
+    } else {
+        // console.log("Back from DB with result:");
+        // console.log(result.rows);
+        let data = results.rows
+        callback(data)
+    }
+})
+
 }
 
 function getGuestList() {
