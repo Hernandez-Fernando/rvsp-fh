@@ -210,7 +210,7 @@
                                 <label for="number">Reservation Code</label>
                                 <input id="number" name="number" class="form-control text-uppercase" type="text">
                             </div>
-                            <button id="confirm" class="btn btn-primary text-uppercase" type="submit">Search</button>
+                            <button class="btn btn-primary text-uppercase" onclick="searchReservation()">Search</button>
 
                         </div>
                         <div id="result" class="col-md-5 offset-md-2 mt-3 form-group font-weight-medium text-uppercase">
@@ -234,28 +234,9 @@
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
     <script>
         $(document).ready(function () {
-
-            $("#confirm").click(function () {
-                let code = $("#number").val();
-                
-                $.ajax({
-                    url: '/reservation',
-                    method: "POST",
-                    data: {
-                        code: code
-                    },
-                    success: function (response) {
-                        
-                        console.log(response)
-                        $("#result").html(response);
-                    }
-                });
-
-            });
-
-
 
             // Checkbox toggle
             $('.nav-link').click(function () {
