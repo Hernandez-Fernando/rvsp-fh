@@ -7,7 +7,15 @@ function getReservation(req, res) {
     })
 }
 
+function confirmReservation(req, res) {
+    let id = req.body.id
+    model.confirmReservation(id, function(result) {
+        res.json(result)
+    })
+	}
+
 
 module.exports = {
-    getReservation: getReservation
+    getReservation: getReservation,
+		confirmReservation: confirmReservation
 }

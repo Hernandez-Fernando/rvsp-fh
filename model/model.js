@@ -19,8 +19,35 @@ function getReservation(code, callback) {
 
 }
 
-function getGuestList() {
+function confirmReservation(id, callback) {
+    
+    let sql = "SELECT * FROM guests WHERE guestCode =$1::text";
+    let params = [id]
+    pool.query(sql, params, function(err, result) { 
+    if (err) {
+        console.log("Error in query: ")
+        console.log(err)
+    } else {
+        let data = result.rows
+        callback(data)
+    }
+})
 
+}
+
+
+function getGuestList(callback) {
+let sql = "SELECT * FROM guests";
+    let params = [code]
+    pool.query(sql, params, function(err, result) { 
+    if (err) {
+        console.log("Error in query: ")
+        console.log(err)
+    } else {
+        let data = result.rows
+        callback(data)
+    }
+	})
 }
 
 function addGuest(name, lastname, code, guests) {

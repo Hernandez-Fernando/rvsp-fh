@@ -16,9 +16,11 @@ app.set('view engine', 'ejs')
 
 // Routing
 app.get('/', (req, res) => res.render('pages/index'))
+app.post('/reservation', controller.getReservation)
+app.post('/confirm', controller.confirmReservation)
 app.get('/admin', (req, res) => res.render('pages/admin'))
 app.get('/login', (req, res) => res.render('pages/login'))
-app.post('/reservation', controller.getReservation)
+
 
 
 app.listen(PORT, () => console.log(`App ready on ${PORT}`))
