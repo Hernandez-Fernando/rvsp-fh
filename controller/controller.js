@@ -12,10 +12,30 @@ function confirmReservation(req, res) {
     model.confirmReservation(id, function(result) {
         res.json(result)
     })
-	}
+}
+
+function getGuestList(req, res, callback) {
+
+    model.getGuestList(function(result) {
+        callback(result)
+    })
+}
+
+function addGuest(req, res) {
+    let guestName = req.body.guestName
+    let guestLastname = req.body.guestLastname
+    let guestCode = req.body.guestCode
+    let guestNumber = req.body.guestNumber
+
+    model.addGuest(guestName, guestLastname, guestCode, guestNumber, function(result) {
+        res.json(result)
+    })
+}
 
 
 module.exports = {
     getReservation: getReservation,
-		confirmReservation: confirmReservation
+    confirmReservation: confirmReservation,
+    getGuestList: getGuestList,
+    addGuest: addGuest
 }

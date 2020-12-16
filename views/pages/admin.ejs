@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Roboto:300,400,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link rel="stylesheet" href="css/style-min.css">
 
 </head>
@@ -22,6 +21,7 @@
 </header>
 <main class="main bg-light text-dark py-4 px-2">
 	<div class="container py-4">
+		<div id="alerts"></div>
 			<section class="guest-info container">
 				
 				<h2 class="text-center mb-4">Wedding Admin Panel</h2>
@@ -44,31 +44,29 @@
 				<div class="container">
 					<h2 class="text-center">Guests List</h2>
 					<div class="row">
-						<div class="col-lg-4">
-						  <form action="/addGuest" method="post">
+						<div class="col-lg-3">
 							  <div class="form-group">
 						        <label for="guestName">Guest Name</label>
-						        <input class="form-control" type="text" name="guestName" required autofocus>
+						        <input id="guestName" class="form-control" type="text" name="guestName" required autofocus>
 							</div>
 							<div class="form-group">
-						        <label for="guests">Guests</label>
-						        <input class="form-control" type="text" name="guests" required>
+						        <label for="guestLastname">Guest Lastname</label>
+						        <input id="guestLastname" class="form-control" type="text" name="guestLastname" required>
 							</div>
 							<div class="form-group">
-						        <button class="btn btn-primary w-100" type="submit" class="button">Add</button>
+						        <label for="guestNumber">Number of Guests</label>
+						        <input id="guestNumber" class="form-control" type="text" name="guestNumber" required>
+							</div>
+							<div class="form-group">
+						        <button class="btn btn-primary w-100" class="button" onclick="addGuest()">Add Reservation</button>
 						     </div>
-							<input type="hidden" name="action" value="add">
-						  </form>
 						</div>
 					
 					
-						<div class="col-lg-8">
+						<div class="col-lg-9">
 							<div class="container">
-								<div class="row bg-primary text-light">
-									<div class="col-lg-1">
-										<p class="text-center my-1">#</p>
-									</div>
-									<div class="col-lg-1">
+								<div class="row bg-primary text-light mb-1">
+									<div class="col-lg-2">
 										<p class="text-center my-1">Code</p>
 									</div>
 									<div class="col-lg-4">
@@ -84,8 +82,30 @@
 										<p class="text-center my-1">Options</p>
 									</div>
 								</div>
-								
-
+								<div id="guestList">
+									<% for (let i = 0; i < guests.length; i++) { %>
+								<div class="row border-bottom mb-1">
+									<!-- <div class="col-lg-1">
+										<p class="text-center my-1">#</p>
+									</div> -->
+									<div class="col-lg-2">
+										<p class="text-center my-1"><%= guests[i].guestcode %></p>
+									</div>
+									<div class="col-lg-4">
+										<p class="my-1"><%= guests[i].guestname + " " + guests[i].guestlastname %></p>
+									</div>
+									<div class="col-lg-1">
+										<p class="text-center my-1"><%= guests[i].guestnumber %></p>
+									</div>
+									<div class="col-lg-2">
+										<p class="text-center my-1"><%= guests[i].guestattending %></p>
+									</div>
+									<div class="col-lg-3">
+										<p class="text-center my-1">Options</p>
+									</div>
+								</div>
+								<% } %>
+								</div>
 							</div>
 							
 						</div> 
@@ -98,7 +118,6 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<h3>Create New User</h3>
-				  <form action="/addUser" method="post">
 					  <div class="form-group">
 				        <label for="name">Name</label>
 				        <input class="form-control" type="text" name="name" required>
@@ -112,10 +131,8 @@
 				        <input class="form-control" type="password" name="password" required>
 					</div>
 					<div class="form-group">
-				        <button class="btn btn-primary w-100" type="submit" class="button">Create</button>
+				        <button class="btn btn-primary w-100" class="button" onclick="addUser()">Create User</button>
 				     </div>
-					<input type="hidden" name="action" value="newUser">
-				  </form>
 				</div>
 				
 				<div class="col-lg-8">
@@ -129,10 +146,13 @@
 
 <footer class="bg-primary py-4">
 	<div class="container text-center">
-		<p class="hashtag">#Zayra&amp;Fernando2019</p>
+		<p class="hashtag">#Zayra&amp;Fernando2021</p>
 		<p class="copy">&copy;2021 - All Rights Reserved - FH Web Developer</p>
 	</div>
 </footer>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/admin.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
