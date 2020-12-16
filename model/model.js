@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
-// const connectionString = process.env.DATABASE_URL
-// REMOVE THIS LINE BEFORE DEPLOYING 
-const connectionString = 'postgres://juycvdxtmbipba:540b7db27f3db1dbaa917cb95cabc42d1858841e6f7240b4260a39e1a6d28e77@ec2-54-166-114-48.compute-1.amazonaws.com:5432/d5tda5191gg8dl?ssl=true'
+const connectionString = process.env.DATABASE_URL
+// // REMOVE THIS LINE BEFORE DEPLOYING 
+// const connectionString = 'postgres://juycvdxtmbipba:540b7db27f3db1dbaa917cb95cabc42d1858841e6f7240b4260a39e1a6d28e77@ec2-54-166-114-48.compute-1.amazonaws.com:5432/d5tda5191gg8dl?ssl=true'
 
 const pool = new Pool({ connectionString: connectionString })
 
